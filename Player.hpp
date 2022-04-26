@@ -1,3 +1,6 @@
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
 #include "Game.hpp"
 using namespace std;
 
@@ -16,3 +19,5 @@ using namespace std;
             void coup(Player p);
             int coins(); 
     };
+
+#endif

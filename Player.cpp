@@ -1,5 +1,4 @@
 #include "Player.hpp"
-#include "Game.hpp"
 
 void Player::income(){}
 void Player::foreign_aid(){}
