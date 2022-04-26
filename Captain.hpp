@@ -5,7 +5,9 @@ using namespace std;
 class Captain : public Player
 {
     public:
-        Captain(Game g, string name);
+        Captain(Game game, string name) : Player(game, name) {
+            
+        }
         void block(Player); //can block like ambassador
         void steal(Player);
         string role();
