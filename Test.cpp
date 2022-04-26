@@ -1,21 +1,19 @@
+#include <iostream>
+#include <stdexcept>
+#include "doctest.h"
+
 #include "Player.hpp"
 #include "Duke.hpp"
 #include "Assassin.hpp"
 #include "Ambassador.hpp"
 #include "Captain.hpp"
 #include "Contessa.hpp"
-#include "doctest.h"
 
+using namespace std;
 using namespace coup;
 
-#include <iostream>
-#include <stdexcept>
-#include <vector>
-using namespace std;
-
-
 TEST_CASE("Duke"){
-    Game game_1{};
+    Game game_1;
     Assassin assassin{game_1, "Maia"};
     Duke duke1{game_1, "Ally"};
     Contessa contessa{game_1, "Star"};
@@ -36,7 +34,7 @@ TEST_CASE("Duke"){
 }
 
 TEST_CASE("Assassin"){
-    Game game_2{};
+    Game game_2;
     Assassin assassin{game_2, "Dan"};
     Captain captain{game_2, "Lucifer"};
     Ambassador ambassador{game_2, "Detective"};
@@ -57,7 +55,7 @@ TEST_CASE("Assassin"){
 }
 
 TEST_CASE("Ambassador"){
-    Game game_3{};
+    Game game_3;
     Captain captain{game_3, "Ariel"};
     Duke duke{game_3, "Nitzan"};
     Ambassador ambassador{game_3, "Jerusalem"};
@@ -75,7 +73,7 @@ TEST_CASE("Ambassador"){
 }
 
 TEST_CASE("Captain"){ //cap, cap, ambassador
-    Game game_4{};
+    Game game_4;
     Captain captain1{game_4, "Rashi"};
     Captain captain2{game_4, "Keren"};
     Captain captain3{game_4, "Skrown"};
@@ -91,7 +89,7 @@ TEST_CASE("Captain"){ //cap, cap, ambassador
 }
 
 TEST_CASE("Contessa"){ // assassin
-    Game game_5{};
+    Game game_5;
     Assassin assassin{game_5, "mother"};
     Contessa contessa{game_5, "father"};
     Duke duke{game_5, "child"};
