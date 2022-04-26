@@ -11,7 +11,7 @@ namespace coup{
             vector<int> players_status; 
             string winning_player;
         public:
-            Game();
+            // Game();
             string turn();
             vector<string> players();
             string winner(); //if game is still active, throw error
