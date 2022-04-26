@@ -5,7 +5,9 @@ using namespace std;
 class Ambassador : public Player
 {
     public:
-        Ambassador(coup::Game g, string name);
+        Ambassador(Game game, string name) : Player(game, name) {
+            
+        }
         void transfer(Player p1, Player p2);
         void block(Player);
         string role();
