@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include "Game.hpp"
+using namespace coup;
 using namespace std;
 
     class Player
@@ -10,7 +11,7 @@ using namespace std;
            int coin_count;
            string name;
         public:
-            Player(string name){
+            Player(Game game, string name){
                 this->name = name;
                 this->coin_count = 0;
             }
