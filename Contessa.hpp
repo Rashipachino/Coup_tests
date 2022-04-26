@@ -5,7 +5,9 @@ using namespace std;
 class Contessa : public Player
 {
     public:
-        Contessa(coup::Game g, string name);
+        Contessa(Game game, string name) : Player(game, name) {
+            
+        }
         void block(Player); //can block assassanation
         string role();
 };
