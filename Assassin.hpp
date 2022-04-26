@@ -5,7 +5,9 @@ using namespace std;
 class Assassin : public Player
 {
     public:
-        Assassin(coup::Game g, string name);   
+        Assassin(Game game, string name) : Player(game, name) {
+
+        }  
         void coup(Player p); //can coup in 3
         string role();
 };
