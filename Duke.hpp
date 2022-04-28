@@ -9,7 +9,6 @@ class Duke : public Player
         Duke(Game game, string name) : Player(game, name) {
             
         }
-        string role();
         void tax();
-        void block(Player p);
+        void block(const Player &p);
 };
