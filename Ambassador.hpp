@@ -8,7 +8,6 @@ class Ambassador : public Player
         Ambassador(Game game, string name) : Player(game, name) {
             
         }
-        void transfer(Player p1, Player p2);
-        void block(Player);
-        string role();
+        void transfer(const Player &p1, const Player &p2);
+        void block(const Player &p1);
 };
