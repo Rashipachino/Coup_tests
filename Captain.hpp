@@ -8,7 +8,6 @@ class Captain : public Player
         Captain(Game game, string name) : Player(game, name) {
             
         }
-        void block(Player); //can block like ambassador
-        void steal(Player);
-        string role();
+        void block(const Player &p); //can block like ambassador
+        void steal(const Player &p);
 };
