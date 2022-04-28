@@ -8,6 +8,5 @@ class Assassin : public Player
         Assassin(Game game, string name) : Player(game, name) {
 
         }  
-        void coup(Player p); //can coup in 3
-        string role();
+        void coup(const Player &p); //can coup in 3
 };
