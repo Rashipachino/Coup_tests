@@ -2,13 +2,14 @@
 #define GAME_HPP
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 namespace coup{
    class Game 
     {
         protected:
             vector<string> player_list; //have to delete players when game is over
-            vector<int> players_status; 
+            unordered_map<string, string> player_status; 
             string winning_player;
         public:
             // Game();

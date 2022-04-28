@@ -10,6 +10,5 @@ namespace coup{
     }
     string coup::Game::winner()//if game is still active, throw error
     {
-        return "winner";
     }
 }

@@ -10,5 +10,5 @@ class Duke : public Player
             
         }
         void tax();
-        void block(const Player &p);
+        void block(Player &p);
 };

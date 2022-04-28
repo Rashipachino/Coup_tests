@@ -6,8 +6,7 @@ class Ambassador : public Player
 {
     public:
         Ambassador(Game game, string name) : Player(game, name) {
-            
         }
-        void transfer(const Player &p1, const Player &p2);
-        void block(const Player &p1);
+        void transfer(Player &p1, Player &p2);
+        void block(Player &p1);
 };

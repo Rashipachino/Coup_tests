@@ -9,5 +9,5 @@ class Captain : public Player
             
         }
         void block(const Player &p); //can block like ambassador
-        void steal(const Player &p);
+        void steal(Player &p);
 };
