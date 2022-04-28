@@ -17,8 +17,9 @@ using namespace std;
             }
             void income();
             void foreign_aid();
-            void coup(Player p);
-            int coins(); 
+            void coup(const Player &p);
+            int coins() const; 
+            static string role();
     };
 
 #endif
