@@ -1,7 +1,4 @@
 #include "Contessa.hpp"
 #include "Game.hpp"
 
-void Contessa::block(Player){} //can block assassanation
-string Contessa::role(){
-    return "Contessa";
-}
+void Contessa::block(const Player &p){} //can block assassanation
