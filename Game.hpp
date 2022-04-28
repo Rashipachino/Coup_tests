@@ -12,9 +12,9 @@ namespace coup{
             string winning_player;
         public:
             // Game();
-            string turn();
-            vector<string> players();
-            string winner(); //if game is still active, throw error
+            static string turn();
+            static vector<string> players();
+            static string winner(); //if game is still active, throw error
     };
 }
 #endif
