@@ -8,6 +8,5 @@ class Contessa : public Player
         Contessa(Game game, string name) : Player(game, name) {
             
         }
-        void block(Player); //can block assassanation
-        string role();
+        void block(const Player &p); //can block assassanation
 };
