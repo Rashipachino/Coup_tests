@@ -2,7 +2,4 @@
 #include "Game.hpp"
 
 void Duke::tax(){}
-void Duke::block(Player p){}
-string Duke::role(){
-    return "Duke";
-}
+void Duke::block(const Player &p){}
