@@ -11,13 +11,15 @@ using namespace std;
            int coin_count;
            string name;
            Game game;
-           string status;
+           string last_move;
+           Player& history = *this; //originally history is itself
         public:
             Player(Game game, string name){
                 this->name = name;
                 this->coin_count = 0;
                 this->game = game;
-                this->status = "Alive";
+                game.set_players(name);
+                game.set_status(name, "Alive");
             }
             void income();
             void foreign_aid();
@@ -25,8 +27,12 @@ using namespace std;
             int coins() const; 
             string role(); //add virtual 
             void set_coins(int c);
-            string get_status();
-            void change_status();
+            Game& get_game();
+            string get_name();
+            string get_last_move();
+            void set_last_move(string move);
+            Player& get_history();
+            void set_history(Player&);
     };
 
 #endif

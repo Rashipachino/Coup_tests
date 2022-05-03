@@ -1,39 +1,48 @@
 #include "Player.hpp"
 
 void Player::income(){
-    if(status == "Dead"){
-        throw invalid_argument("Player is dead, cannot complete action");
+    if(this->game.turn() != this->name){
+        throw invalid_argument("Player is out of turn");
     }
     if(coin_count == 10){
         throw invalid_argument("Player must coup");
     }
     else{  
         coin_count++;
+        this->last_move == "Income";
+        this->game.update_turn();
     }
 }
 void Player::foreign_aid(){
-    if(status == "Dead"){
-        throw invalid_argument("Player is dead, cannot complete action");
+    if(this->game.turn() != this->name){
+        throw invalid_argument("Player is out of turn");
     }
     if(coin_count == 10){
         throw invalid_argument("Player must coup");
     }
     else{
         coin_count+=2;
+        this->last_move == "Foreign_aid";
+        this->game.update_turn(); 
     }
+   
 }
 void Player::coup(Player &p){
-    if(status == "Dead"){
-        throw invalid_argument("Player is dead, cannot complete action");
+    if(this->game.turn() != this->name){
+        throw invalid_argument("Player is out of turn");
     }
     if(coin_count < 7){
         throw invalid_argument("Not enough coins to coup");
     }
-    if(p.get_status() == "Dead"){
+    if(p.get_game().get_status(p.get_name()) == "Dead"){
         throw invalid_argument("Player to coup is already dead");
     }
     else{
-        p.change_status(); //kill character
+       p.get_game().set_status(p.get_name(), "Dead"); //kill character
+        this->coin_count -= 7;
+        this->last_move = "Coup";
+        this->game.update_turn();
+        this->history = p;
     }
 }
 int Player::coins() const{
@@ -44,15 +53,26 @@ string Player::role(){
 }
 void Player::set_coins(int c){
     coin_count == c;
-}
-string Player::get_status(){
-    return status;
-}
-void Player::change_status(){
-    if(status == "Dead"){
-        status = "Alive";
-    }
-    else if(status == "Alive"){
-        status = "Dead";
+    if(coin_count < 0){
+        throw invalid_argument("Coin count is negative thus invalid");
     }
 }
+Game& Player::get_game(){
+    return game;
+}
+string Player::get_name(){
+    return name;
+}
+string Player::get_last_move(){
+    return last_move;
+}
+void Player::set_last_move(string move){
+    this->last_move = move;
+}
+Player& Player::get_history(){
+    return this->history;
+}
+void Player::set_history(Player& new_history){
+    this->history = new_history;
+}
+

@@ -3,25 +3,26 @@
   
 //assassin can coup with 3 points. That player's status becomes dead
 void Assassin::coup(Player &p) {
-    if(p.coins() < 3){
+    if(this->coin_count >= 10){ //regular coup
+        Player::coup(p);
+    }
+    else if(this->game.turn() != this->name){
+        throw invalid_argument("Player is out of turn");
+    }
+    else if(this->coin_count < 3){
         throw invalid_argument("Not enough coins to coup");
     }
-    else{
-        
+    else if(p.get_game().get_status(p.get_name()) == "Dead"){
+        throw invalid_argument("Player to coup is already dead");
     }
-    //must add element of turn
-    // if(this->coins() < 3){
-    //     throw invalid_argument("Not enough coins to coup");
-    // }
-    // else{
-        //status of assassinated turns to dead and assassin remembers that he killed him
-    //     p.change_status();
-    //     assassinated = p;
-    // }
+    else{
+        p.get_game().set_status(p.get_name(), "Assassinated"); //Assassinate character
+        this->coin_count -= 3;
+        this->last_move = "Coup";
+        this->game.update_turn();
+        this->history = p;
+    }
 }
-// Player Assassin::get_assassinated(){
-//     return assassinated;
-// }
-// void Assassin::set_assassinated(const Player &p){
-//     assassinated = p;
-//}
+    
+
+

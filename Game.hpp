@@ -10,12 +10,15 @@ namespace coup{
         protected:
             vector<string> player_list; //have to delete players when game is over
             unordered_map<string, string> player_status; 
-            string winning_player;
+            int curr_turn = 0;
         public:
-            // Game();
-            static string turn();
-            static vector<string> players();
-            static string winner(); //if game is still active, throw error
+            string turn();
+            void update_turn();
+            vector<string> players();
+            void set_players(string name);
+            void set_status(string p, string stat);
+            string get_status(string p);
+            string winner(); //if game is still active, throw error
     };
 }
 #endif
