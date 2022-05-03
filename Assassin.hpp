@@ -7,11 +7,10 @@ class Assassin : public Player
     // protected:
     //     Player assassinated;
     public:
-        Assassin(Game game, string name) : Player(game, name) {
+        Assassin(Game &game, string name) : Player(game, name) {
 
         }  
         void coup(Player &p) override; //can coup in 3
-        // Player get_assassinated();
-        // void set_assassinated(const Player &p);
+        string role() override;
 
 };
