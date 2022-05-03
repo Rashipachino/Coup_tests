@@ -2,7 +2,7 @@
 #include "Game.hpp"
 
 void Captain::block(Player &p){
-    if(p.get_game().get_status(p.get_name()) != "Alive"){
+    if(p.get_game()->get_status(p.get_name()) != "Alive"){
             throw invalid_argument("Player is dead or almost dead, cannot be blocked");
         }
         if(p.role() != "Captain"){
@@ -17,21 +17,28 @@ void Captain::block(Player &p){
         }
 } //can block like ambassador
 void Captain::steal(Player &p){
-    if(this->game.turn() != this->name){
+    if(this->game->turn() != this->name){
         throw invalid_argument("Player is out of turn");
     }
+    if(p.get_game()->get_status(p.get_name()) != "Alive"){
+            throw invalid_argument("Player is dead or almost dead, cannot be blocked");
+        }
     if(coins() == 10){
         throw invalid_argument("Player must coup");
     }    
-    if(p.get_game().get_status(p.get_name()) != "Alive"){
-            throw invalid_argument("Player is dead or almost dead, cannot be blocked");
-        }
-    else{
+    else if(p.coins() == 1){
+        set_coins(coins() + 1);
+        p.set_coins(p.coins() - 1);
+    }
+    else if(p.coins() >= 2){
         set_coins(coins() + 2);
         p.set_coins(p.coins() - 2);
-        this->last_move = "Steal";
-        this->history = &p;
-        p.get_game().update_turn();
-    }
+    }    
+    this->last_move = "Steal";
+    this->history = &p;
+    p.get_game()->update_turn();
+}
+string Captain::role(){
+    return "Captain";
 }
 
