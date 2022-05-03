@@ -42,7 +42,7 @@ void Player::coup(Player &p){
         this->coin_count -= 7;
         this->last_move = "Coup";
         this->game.update_turn();
-        this->history = p;
+        this->history = &p;
     }
 }
 int Player::coins() const{
@@ -69,10 +69,10 @@ string Player::get_last_move(){
 void Player::set_last_move(string move){
     this->last_move = move;
 }
-Player& Player::get_history(){
+Player* Player::get_history(){
     return this->history;
 }
-void Player::set_history(Player& new_history){
+void Player::set_history(Player* new_history){
     this->history = new_history;
 }
 

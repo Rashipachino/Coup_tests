@@ -12,7 +12,7 @@ using namespace std;
            string name;
            Game game;
            string last_move;
-           Player& history = *this; //originally history is itself
+           Player* history;
         public:
             Player(Game game, string name){
                 this->name = name;
@@ -31,8 +31,8 @@ using namespace std;
             string get_name();
             string get_last_move();
             void set_last_move(string move);
-            Player& get_history();
-            void set_history(Player&);
+            Player* get_history();
+            void set_history(Player* new_history);
     };
 
 #endif

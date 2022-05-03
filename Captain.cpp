@@ -13,7 +13,7 @@ void Captain::block(Player &p){
         }
         else{
             p.set_coins(p.coins()-2); //reduce captain's coin count;
-            p.get_history().set_coins(p.get_history().coins()+2); //add back coins to player stolen from
+            p.get_history()->set_coins(p.get_history()->coins()+2); //add back coins to player stolen from
         }
 } //can block like ambassador
 void Captain::steal(Player &p){
@@ -30,7 +30,7 @@ void Captain::steal(Player &p){
         set_coins(coins() + 2);
         p.set_coins(p.coins() - 2);
         this->last_move = "Steal";
-        this->history = p;
+        this->history = &p;
         p.get_game().update_turn();
     }
 }

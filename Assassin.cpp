@@ -20,7 +20,7 @@ void Assassin::coup(Player &p) {
         this->coin_count -= 3;
         this->last_move = "Coup";
         this->game.update_turn();
-        this->history = p;
+        this->history = &p;
     }
 }
     
