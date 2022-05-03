@@ -9,7 +9,7 @@ void Player::income(){
     }
     else{  
         coin_count++;
-        this->last_move == "Income";
+        this->last_move = "Income";
         this->game.update_turn();
     }
 }
@@ -22,7 +22,7 @@ void Player::foreign_aid(){
     }
     else{
         coin_count+=2;
-        this->last_move == "Foreign_aid";
+        this->last_move = "Foreign_aid";
         this->game.update_turn(); 
     }
    
@@ -52,7 +52,7 @@ string Player::role(){
     return "Player";
 }
 void Player::set_coins(int c){
-    coin_count == c;
+    coin_count = c;
     if(coin_count < 0){
         throw invalid_argument("Coin count is negative thus invalid");
     }

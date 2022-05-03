@@ -10,7 +10,7 @@ namespace coup{
         protected:
             vector<string> player_list; //have to delete players when game is over
             unordered_map<string, string> player_status; 
-            int curr_turn = 0;
+            unsigned long curr_turn = 0;
         public:
             string turn();
             void update_turn();
