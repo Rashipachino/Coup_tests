@@ -5,15 +5,24 @@ namespace coup{
         return player_list[curr_turn];
     }
     void coup::Game::update_turn(){
+        curr_turn = (curr_turn + 1) % player_list.size();
+
         while(player_status[player_list[curr_turn]] != "Alive"){
             curr_turn = (curr_turn + 1) % player_list.size();
         }
     }
     vector<string> coup::Game::players(){
-        return player_list;
+        vector<string> ps;
+        for(unsigned long i = 0; i < player_list.size(); i++){
+            if(this->player_status[this->player_list[i]] == "Alive"){
+                ps.push_back(player_list[i]);
+            }
+        }
+        return ps;
     }
     void coup::Game::set_players(string name){
         player_list.push_back(name);
+        //cout << player_list[0] << endl;
     }
     void coup::Game::set_status(string p, string stat){
         player_status[p] = stat;
