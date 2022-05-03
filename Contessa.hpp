@@ -5,8 +5,9 @@ using namespace std;
 class Contessa : public Player
 {
     public:
-        Contessa(Game game, string name) : Player(game, name) {
+        Contessa(Game &game, string name) : Player(game, name) {
             
         }
         void block(Player &p); //can block assassanation
+        string role() override;
 };
