@@ -10,24 +10,24 @@ using namespace std;
         protected:
            int coin_count;
            string name;
-           Game game;
+           Game* game;
            string last_move;
            Player* history;
         public:
-            Player(Game game, string name){
+            Player(Game &game, string name){
                 this->name = name;
                 this->coin_count = 0;
-                this->game = game;
-                game.set_players(name);
-                game.set_status(name, "Alive");
+                this->game = &game;
+                this->game->set_players(name);
+                this->game->set_status(name, "Alive");
             }
             void income();
             void foreign_aid();
             virtual void coup(Player &p);
             int coins() const; 
-            string role(); //add virtual 
+            virtual string role(); //add virtual 
             void set_coins(int c);
-            Game& get_game();
+            Game* get_game();
             string get_name();
             string get_last_move();
             void set_last_move(string move);
