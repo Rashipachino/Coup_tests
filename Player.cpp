@@ -1,7 +1,7 @@
 #include "Player.hpp"
 
 void Player::income(){
-    if(this->game.turn() != this->name){
+    if(this->game->turn() != this->name){
         throw invalid_argument("Player is out of turn");
     }
     if(coin_count == 10){
@@ -10,11 +10,11 @@ void Player::income(){
     else{  
         coin_count++;
         this->last_move = "Income";
-        this->game.update_turn();
+        this->game->update_turn();
     }
 }
 void Player::foreign_aid(){
-    if(this->game.turn() != this->name){
+    if(this->game->turn() != this->name){
         throw invalid_argument("Player is out of turn");
     }
     if(coin_count == 10){
@@ -23,25 +23,25 @@ void Player::foreign_aid(){
     else{
         coin_count+=2;
         this->last_move = "Foreign_aid";
-        this->game.update_turn(); 
+        this->game->update_turn(); 
     }
    
 }
 void Player::coup(Player &p){
-    if(this->game.turn() != this->name){
+    if(this->game->turn() != this->name){
         throw invalid_argument("Player is out of turn");
     }
     if(coin_count < 7){
         throw invalid_argument("Not enough coins to coup");
     }
-    if(p.get_game().get_status(p.get_name()) == "Dead"){
+    if(p.get_game()->get_status(p.get_name()) == "Dead"){
         throw invalid_argument("Player to coup is already dead");
     }
     else{
-       p.get_game().set_status(p.get_name(), "Dead"); //kill character
+       p.get_game()->set_status(p.get_name(), "Dead"); //kill character
         this->coin_count -= 7;
         this->last_move = "Coup";
-        this->game.update_turn();
+        this->game->update_turn();
         this->history = &p;
     }
 }
@@ -57,7 +57,7 @@ void Player::set_coins(int c){
         throw invalid_argument("Coin count is negative thus invalid");
     }
 }
-Game& Player::get_game(){
+Game* Player::get_game(){
     return game;
 }
 string Player::get_name(){
